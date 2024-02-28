@@ -19,7 +19,13 @@ export const actions: Actions = {
 			});
 		}
 
-		console.log(form);
+		try {
+			await event.locals.pb
+				.collection('users')
+				.authWithPassword(form.data.email, form.data.password);
+		} catch (err: any) {
+			throw err;
+		}
 
 		throw redirect(303, '/');
 	}

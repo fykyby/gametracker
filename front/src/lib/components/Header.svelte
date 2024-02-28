@@ -1,8 +1,6 @@
 <script>
-	import ModalRegister from './ModalRegister.svelte';
+	import { user } from '$lib/stores/user';
 	import Button from './ui/button/button.svelte';
-
-	let modalRegisterOpen = false;
 </script>
 
 <header class="bg-zinc-900 p-2 flex gap-2 items-center">
@@ -10,9 +8,13 @@
 		<Button href="/" variant="ghost" class="text-lg">gametracker</Button>
 	</div>
 	<div class="flex gap-2">
-		<Button variant="secondary" href="/log-in">Log In</Button>
-		<!-- <Button on:click={() => (modalRegisterOpen = true)}>Sign Up</Button> -->
-		<Button href="/sign-up">Sign Up</Button>
+		{#if $user}
+			<form method="POST" action="/log-out">
+				<Button variant="secondary" type="submit">Log Out</Button>
+			</form>
+		{:else}
+			<Button variant="secondary" href="/log-in">Log In</Button>
+			<Button href="/sign-up">Sign Up</Button>
+		{/if}
 	</div>
-	<!-- <ModalRegister bind:open={modalRegisterOpen} /> -->
 </header>

@@ -1,6 +1,18 @@
-<script>
+<script lang="ts">
 	import '../app.css';
 	import Header from '$lib/components/Header.svelte';
+	import type { PageData } from './$types';
+	import { user } from '$lib/stores/user';
+
+	export let data: PageData;
+
+	if (!data.user) {
+		$user = undefined;
+	} else {
+		$user = {
+			id: data.user.id
+		};
+	}
 </script>
 
 <Header />
