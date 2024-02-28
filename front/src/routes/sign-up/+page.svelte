@@ -20,7 +20,7 @@
 		</Card.Content>
 
 		<Card.Footer class="flex justify-end">
-			<Button on:click={() => formElement.submit()}>Confirm</Button>
+			<Button on:click={() => formElement.submit()}>Submit</Button>
 		</Card.Footer>
 	</Card.Root>
 </div>
