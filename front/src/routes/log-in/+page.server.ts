@@ -24,7 +24,9 @@ export const actions: Actions = {
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
-			throw err;
+			return fail(400, {
+				form
+			});
 		}
 
 		throw redirect(303, '/');

@@ -3,7 +3,7 @@
 	import Button from './ui/button/button.svelte';
 </script>
 
-<header class="bg-zinc-900 p-2 flex gap-2 items-center">
+<header class="p-2 flex gap-2 items-center border-b shadow">
 	<div class="flex-grow">
 		<Button href="/" variant="ghost" class="text-lg">gametracker</Button>
 	</div>
