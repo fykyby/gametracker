@@ -1,6 +1,12 @@
 import { z } from 'zod';
 
-export const formSchema = z
+export const logInSchema = z.object({
+	email: z.string().max(64, 'Email address is too long.').email(),
+	password: z.string().min(6, 'Password must contain at least 6 characters.')
+});
+export type LogInSchema = typeof logInSchema;
+
+export const signUpSchema = z
 	.object({
 		email: z.string().max(64, 'Email address is too long.').email('Invalid email.'),
 		username: z
@@ -15,5 +21,4 @@ export const formSchema = z
 		message: "Passwords don't match.",
 		path: ['passwordConfirm']
 	});
-
-export type FormSchema = typeof formSchema;
+export type SignUpSchema = typeof signUpSchema;

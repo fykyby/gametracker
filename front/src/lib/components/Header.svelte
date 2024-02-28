@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { user } from '$lib/stores/user';
 	import Button from './ui/button/button.svelte';
 </script>

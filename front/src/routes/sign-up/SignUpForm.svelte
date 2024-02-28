@@ -2,16 +2,16 @@
 	import { Input } from '$lib/components/ui/input';
 	import * as Form from '$lib/components/ui/form';
 	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
-	import { formSchema, type FormSchema } from './schema';
+	import { signUpSchema, type SignUpSchema } from '$lib/schemas';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
-	export let data: SuperValidated<Infer<FormSchema>>;
+	export let data: SuperValidated<Infer<SignUpSchema>>;
 
 	export let formElement: HTMLFormElement;
 
 	const form = superForm(data, {
 		dataType: 'json',
-		validators: zodClient(formSchema)
+		validators: zodClient(signUpSchema)
 	});
 
 	const { form: formData, enhance } = form;

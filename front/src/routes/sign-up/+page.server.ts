@@ -1,27 +1,19 @@
 import type { Actions, PageServerLoad } from './$types';
 import { superValidate, type ValidationErrors } from 'sveltekit-superforms';
-import { formSchema } from './schema';
 import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import errorsFromServerResponse from '$lib/errorsFromServerResponse';
-// import { pb } from '$lib/server/pocketbase';
-
-type FormErrors = {
-	email?: string | string[];
-	username?: string | string[];
-	password?: string | string[];
-	passwordConfirm?: string | string[];
-};
+import { signUpSchema } from '$lib/schemas';
 
 export const load: PageServerLoad = async () => {
 	return {
-		form: await superValidate(zod(formSchema))
+		form: await superValidate(zod(signUpSchema))
 	};
 };
 
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(event, zod(formSchema));
+		const form = await superValidate(event, zod(signUpSchema));
 		if (!form.valid) {
 			return fail(400, {
 				form
@@ -44,6 +36,6 @@ export const actions: Actions = {
 			throw err;
 		}
 
-		throw redirect(303, '/');
+		redirect(303, '/');
 	}
 };
