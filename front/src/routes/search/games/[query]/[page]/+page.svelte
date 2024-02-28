@@ -35,7 +35,14 @@
 					<div class="flex items-end justify-between">
 						<MetaScore score={result.metacritic} />
 						{#if $user}
-							<ListUpdateBtn />
+							<ListUpdateBtn
+								gameData={{
+									rawgId: result.id,
+									title: result.name,
+									rating: 0,
+									status: 0
+								}}
+							/>
 						{/if}
 					</div>
 				</div>

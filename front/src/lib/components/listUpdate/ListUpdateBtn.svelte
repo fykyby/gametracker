@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
 	import { Scroll } from 'lucide-svelte';
 	import Button from '../ui/button/button.svelte';
 	import ListUpdateDialog from './ListUpdateDialog.svelte';
+	import type { GameData } from '$lib/types';
 
+	export let gameData: GameData;
 	let open = false;
 </script>
 
@@ -10,4 +12,4 @@
 	<Scroll />
 </Button>
 
-<ListUpdateDialog bind:open />
+<ListUpdateDialog {gameData} bind:open />

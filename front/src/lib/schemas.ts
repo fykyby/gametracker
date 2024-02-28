@@ -22,3 +22,9 @@ export const signUpSchema = z
 		path: ['passwordConfirm']
 	});
 export type SignUpSchema = typeof signUpSchema;
+
+export const updateListSchema = z.object({
+	status: z.number().min(0, 'Incorrect status.').max(5, 'Incorrect status.'),
+	rating: z.number().min(0, 'Incorrect rating.').max(10, 'Incorrect rating.')
+});
+export type UpdateListSchema = typeof updateListSchema;
