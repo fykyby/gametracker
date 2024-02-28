@@ -62,6 +62,12 @@ h1 {
 		--border: 215 27.9% 16.9%;
 		--input: 215 27.9% 16.9%;
 		--ring: 263.4 70% 50.4%;
+
+		/* my vars */
+		--success: rgb(55, 124, 71);
+		--success-foreground: rgb(255, 255, 255);
+		--warning: rgb(202, 187, 56);
+		--warning-foreground: rgb(0, 0, 0);
 	}
 }
 

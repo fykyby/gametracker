@@ -3,11 +3,13 @@ import { PUBLIC_SEARCH_PAGE_SIZE } from '$env/static/public';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
-	const res = await fetch(
+	const searchRes = await fetch(
 		RAWG_URL +
 			`/games?key=${RAWG_API_KEY}&page=${params.page}&page_size=${PUBLIC_SEARCH_PAGE_SIZE}&search=${params.query}`
 	);
-	const data = await res.json();
+	const searchData = await searchRes.json();
 
-	console.log(data);
+	return {
+		results: await searchData.results
+	};
 };

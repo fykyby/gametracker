@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { user } from '$lib/stores/user';
+	import { Search } from 'lucide-svelte';
 	import Button from './ui/button/button.svelte';
 </script>
 
@@ -8,6 +9,9 @@
 		<Button href="/" variant="ghost" class="text-lg">gametracker</Button>
 	</div>
 	<div class="flex gap-2">
+		<Button variant="secondary" size="icon" href="/search">
+			<Search />
+		</Button>
 		{#if $user}
 			<form method="POST" action="/log-out">
 				<Button variant="secondary" type="submit">Log Out</Button>
