@@ -4,9 +4,10 @@
 	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
 	import { signUpSchema, type SignUpSchema } from '$lib/schemas';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { get } from 'svelte/store';
+	import AlertError from '$lib/components/ui/AlertError.svelte';
 
 	export let data: SuperValidated<Infer<SignUpSchema>>;
-
 	export let formElement: HTMLFormElement;
 
 	const form = superForm(data, {
@@ -14,7 +15,7 @@
 		validators: zodClient(signUpSchema)
 	});
 
-	const { form: formData, enhance } = form;
+	const { form: formData, message, enhance } = form;
 
 	function handleKeyDown(e: any) {
 		if (e.key !== 'Enter') return;
@@ -65,4 +66,8 @@
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>
+
+	{#if $message}
+		<AlertError message={$message} />
+	{/if}
 </form>

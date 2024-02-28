@@ -39,11 +39,6 @@
 						{/if}
 					</div>
 				</div>
-				<!-- <div class="outline"> -->
-				<!-- <form method="POST" action="/game/{result.id}?/update" use:enhance>
-							<button type="submit">sbm</button>
-						</form> -->
-				<!-- </div> -->
 			</li>
 		{/each}
 	{/await}

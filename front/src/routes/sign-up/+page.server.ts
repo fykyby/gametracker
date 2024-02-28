@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from './$types';
-import { superValidate, type ValidationErrors } from 'sveltekit-superforms';
+import { message, superValidate, type ValidationErrors } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import errorsFromServerResponse from '$lib/errorsFromServerResponse';
@@ -24,9 +24,22 @@ export const actions: Actions = {
 			});
 		}
 
+		let user;
 		try {
-			await event.locals.pb.collection('users').create(form.data);
+			user = await event.locals.pb.collection('users').create(form.data);
+			await event.locals.pb.collection('lists').create({
+				user: user.id,
+				isPrivate: false
+			});
 		} catch (err: any) {
+			if (user) {
+				await event.locals.pb
+					.collection('users')
+					.authWithPassword(form.data.email, form.data.password);
+				await event.locals.pb.collection('users').delete(user.id);
+			}
+
+			form.message = err.response.message;
 			return fail(400, {
 				form: errorsFromServerResponse(form, err)
 			});
@@ -37,7 +50,10 @@ export const actions: Actions = {
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
-			throw err;
+			form.message = err.response.message;
+			return fail(400, {
+				form: errorsFromServerResponse(form, err)
+			});
 		}
 
 		redirect(303, '/');

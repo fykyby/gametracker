@@ -28,6 +28,7 @@ export const actions: Actions = {
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
+			form.message = err.response.message;
 			return fail(400, {
 				form
 			});
