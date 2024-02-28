@@ -4,7 +4,11 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import { logInSchema } from '$lib/schemas';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ locals }) => {
+	if (locals.user) {
+		redirect(303, '/');
+	}
+
 	return {
 		form: await superValidate(zod(logInSchema))
 	};

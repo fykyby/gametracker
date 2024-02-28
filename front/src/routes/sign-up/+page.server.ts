@@ -5,7 +5,11 @@ import { fail, redirect } from '@sveltejs/kit';
 import errorsFromServerResponse from '$lib/errorsFromServerResponse';
 import { signUpSchema } from '$lib/schemas';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ locals }) => {
+	if (locals.user) {
+		redirect(303, '/');
+	}
+
 	return {
 		form: await superValidate(zod(signUpSchema))
 	};
