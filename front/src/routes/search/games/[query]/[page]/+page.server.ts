@@ -10,6 +10,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const searchData = await searchRes.json();
 
 	return {
+		query: params.query,
 		results: await searchData.results
 	};
 };

@@ -8,7 +8,7 @@
 	export let data: PageData;
 </script>
 
-<SearchForm />
+<SearchForm initialQuery={data.query} />
 <Separator />
 
 <ul class="flex flex-col gap-2">
