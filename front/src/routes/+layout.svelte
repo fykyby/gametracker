@@ -17,6 +17,7 @@
 
 	setContext('signUpForm', data.signUpForm);
 	setContext('logInForm', data.logInForm);
+	setContext('updateListForm', data.updateListForm);
 </script>
 
 <Header />

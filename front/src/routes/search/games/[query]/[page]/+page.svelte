@@ -1,11 +1,12 @@
 <script lang="ts">
-	import SearchForm from '../../../../../lib/components/FormSearch.svelte';
+	import SearchForm from '../../../../../lib/components/SearchForm.svelte';
 	import type { PageData } from './$types';
 	import * as Card from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
 	import MetaScore from '$lib/components/MetaScore.svelte';
 	import { user } from '$lib/stores/user';
 	import LoadingIndicator from '$lib/components/LoadingIndicator.svelte';
+	import UpdateListButton from '$lib/components/UpdateListButton.svelte';
 
 	export let data: PageData;
 </script>
@@ -37,15 +38,14 @@
 					<div class="flex items-end justify-between">
 						<MetaScore score={result.metacritic} />
 						{#if $user}
-							btn
-							<!-- <ListUpdateBtn
-											gameData={{
-												rawgId: result.id,
-												title: result.name,
-												rating: 0,
-												status: 0
-											}}
-										/> -->
+							<UpdateListButton
+								gameData={{
+									rawgId: result.id,
+									title: result.name,
+									status: result.statusData.status,
+									rating: result.statusData.rating
+								}}
+							/>
 						{/if}
 					</div>
 				</div>

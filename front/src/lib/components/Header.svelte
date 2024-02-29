@@ -2,10 +2,9 @@
 	import { user } from '$lib/stores/user';
 	import { Search } from 'lucide-svelte';
 	import Button from './ui/button/button.svelte';
-	import DialogSignUp from './DialogSignUp.svelte';
-	import DialogLogIn from './DialogLogIn.svelte';
+	import SignUpDialog from './SignUpDialog.svelte';
+	import LogInDialog from './LogInDialog.svelte';
 	import { enhance } from '$app/forms';
-	import LoadingIndicator from './LoadingIndicator.svelte';
 
 	let formSignUpOpen: boolean = false;
 	let formLogInOpen: boolean = false;
@@ -42,6 +41,6 @@
 </header>
 
 {#if !$user}
-	<DialogLogIn bind:open={formLogInOpen} />
-	<DialogSignUp bind:open={formSignUpOpen} />
+	<LogInDialog bind:open={formLogInOpen} />
+	<SignUpDialog bind:open={formSignUpOpen} />
 {/if}
