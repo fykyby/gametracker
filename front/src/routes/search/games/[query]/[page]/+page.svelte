@@ -3,7 +3,7 @@
 	import type { PageData } from './$types';
 	import * as Card from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
-	import MetaScore from '$lib/components/ui/MetaScore.svelte';
+	import MetaScore from '$lib/components/MetaScore.svelte';
 	import ListUpdateBtn from '$lib/components/listUpdate/ListUpdateBtn.svelte';
 	import { user } from '$lib/stores/user';
 

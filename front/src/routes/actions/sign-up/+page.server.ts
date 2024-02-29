@@ -1,5 +1,5 @@
 import type { Actions, PageServerLoad } from './$types';
-import { message, superValidate, type ValidationErrors } from 'sveltekit-superforms';
+import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import errorsFromServerResponse from '$lib/errorsFromServerResponse';
@@ -9,10 +9,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 	if (locals.user) {
 		redirect(303, '/');
 	}
-
-	return {
-		form: await superValidate(zod(signUpSchema))
-	};
 };
 
 export const actions: Actions = {
@@ -56,6 +52,6 @@ export const actions: Actions = {
 			});
 		}
 
-		redirect(303, '/');
+		return { form, user };
 	}
 };

@@ -1,18 +1,17 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { Input } from '$lib/components/ui/input';
 	import * as Form from '$lib/components/ui/form';
 	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
-	import { signUpSchema, type SignUpSchema } from '$lib/schemas';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { get } from 'svelte/store';
+	import { logInSchema, type LogInSchema } from '$lib/schemas';
 	import AlertError from '$lib/components/ui/AlertError.svelte';
 
-	export let data: SuperValidated<Infer<SignUpSchema>>;
+	export let data: SuperValidated<Infer<LogInSchema>>;
 	export let formElement: HTMLFormElement;
 
 	const form = superForm(data, {
 		dataType: 'json',
-		validators: zodClient(signUpSchema)
+		validators: zodClient(logInSchema)
 	});
 
 	const { form: formData, message, enhance } = form;
@@ -33,14 +32,6 @@
 		<Form.FieldErrors />
 	</Form.Field>
 
-	<Form.Field {form} name="username">
-		<Form.Control let:attrs>
-			<Form.Label>Username</Form.Label>
-			<Input {...attrs} on:keydown={handleKeyDown} bind:value={$formData.username} />
-		</Form.Control>
-		<Form.FieldErrors />
-	</Form.Field>
-
 	<Form.Field {form} name="password">
 		<Form.Control let:attrs>
 			<Form.Label>Password</Form.Label>
@@ -54,20 +45,7 @@
 		<Form.FieldErrors />
 	</Form.Field>
 
-	<Form.Field {form} name="passwordConfirm">
-		<Form.Control let:attrs>
-			<Form.Label>Confirm Password</Form.Label>
-			<Input
-				{...attrs}
-				type="password"
-				on:keydown={handleKeyDown}
-				bind:value={$formData.passwordConfirm}
-			/>
-		</Form.Control>
-		<Form.FieldErrors />
-	</Form.Field>
-
 	{#if $message}
 		<AlertError message={$message} />
 	{/if}
-</form>
+</form> -->

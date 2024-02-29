@@ -5,7 +5,7 @@
 	export let message: string = 'An unknown error has occurred.';
 </script>
 
-<Alert.Root variant="destructive" class="alert">
+<Alert.Root variant="destructive" class="alert my-2">
 	<AlertCircle class="h-4 w-4" />
 	<Alert.Title>Error</Alert.Title>
 	<Alert.Description>{message}</Alert.Description>

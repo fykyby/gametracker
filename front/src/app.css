@@ -10,16 +10,25 @@ body {
 	@apply flex-grow flex flex-col;
 }
 
-div[data-fs-field-error=''] {
-	@apply mb-4;
+form {
+	@apply flex flex-col gap-2;
 }
 
-form .alert {
-	@apply mt-6;
+form .formFooter {
+	@apply flex justify-end gap-2;
+}
+
+h1,
+h2 {
+	@apply font-semibold leading-none tracking-tight;
 }
 
 h1 {
-	@apply text-2xl;
+	@apply text-xl;
+}
+
+h2 {
+	@apply text-lg;
 }
 
 @layer base {

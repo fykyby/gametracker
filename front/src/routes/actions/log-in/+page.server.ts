@@ -8,10 +8,6 @@ export const load: PageServerLoad = async ({ locals }) => {
 	if (locals.user) {
 		redirect(303, '/');
 	}
-
-	return {
-		form: await superValidate(zod(logInSchema))
-	};
 };
 
 export const actions: Actions = {
@@ -23,8 +19,9 @@ export const actions: Actions = {
 			});
 		}
 
+		let user;
 		try {
-			await event.locals.pb
+			user = await event.locals.pb
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
@@ -34,6 +31,9 @@ export const actions: Actions = {
 			});
 		}
 
-		redirect(303, '/');
+		return {
+			form,
+			user
+		};
 	}
 };

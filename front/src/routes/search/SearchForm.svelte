@@ -12,8 +12,8 @@
 	});
 </script>
 
-<form action="/search/games/{query}/1" class="flex w-full gap-2">
-	<Input type="text" placeholder="Search..." bind:value={query} />
+<form action="/search/games/{query}/1" class="flex flex-row w-full gap-2 flex-nowrap">
+	<Input type="text" required placeholder="Search..." bind:value={query} />
 	<Button type="submit" size="icon" class="flex-shrink-0">
 		<Search />
 	</Button>
