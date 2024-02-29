@@ -19,11 +19,11 @@
 
 	const form = superForm(data, {
 		validators: zodClient(updateListSchema),
-		onSubmit: () => {
+		onSubmit() {
 			loading = true;
 			console.log($formData);
 		},
-		onResult: async (e) => {
+		onResult(e) {
 			loading = false;
 			if (e.result.type !== 'success') return;
 
@@ -92,7 +92,9 @@
 							<Select.Root
 								selected={selectedRating}
 								onSelectedChange={(v) => {
-									v && ($formData.rating = v.value);
+									if (!v) return;
+
+									$formData.rating = v.value;
 								}}
 							>
 								<Select.Trigger {...attrs}>

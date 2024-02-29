@@ -17,10 +17,10 @@
 
 	const form = superForm(data, {
 		validators: zodClient(logInSchema),
-		onSubmit: () => {
+		onSubmit() {
 			loading = true;
 		},
-		onResult: async (e) => {
+		onResult(e) {
 			loading = false;
 			if (e.result.type !== 'success') return;
 
