@@ -9,14 +9,14 @@
 
 	if (!data.user) {
 		$user = undefined;
-
-		setContext('signUpForm', data.signUpForm);
-		setContext('logInForm', data.logInForm);
 	} else {
 		$user = {
 			id: data.user.id
 		};
 	}
+
+	setContext('signUpForm', data.signUpForm);
+	setContext('logInForm', data.logInForm);
 </script>
 
 <Header />
