@@ -20,11 +20,13 @@
 		{#each results as result (result.id)}
 			<li class="h-28 border rounded-[--radius] flex">
 				<div class="w-20 flex-shrink-0">
-					<img
-						src={result.background_image ?? '/placeholder.png'}
-						alt={result.name}
-						class="object-cover w-full h-full rounded-l-[--radius]"
-					/>
+					<a href="/game/{result.id}">
+						<img
+							src={result.background_image ?? '/placeholder.png'}
+							alt={result.name}
+							class="object-cover w-full h-full rounded-l-[--radius]"
+						/>
+					</a>
 				</div>
 				<div class="flex p-2 w-full flex-col">
 					<Card.Title class="line-clamp-2">
