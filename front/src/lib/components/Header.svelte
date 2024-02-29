@@ -22,7 +22,7 @@
 		{#if $user}
 			<form
 				method="POST"
-				action="actions/log-out"
+				action="/actions/log-out"
 				use:enhance={() => {
 					return async ({ result }) => {
 						if (result.type === 'success') {

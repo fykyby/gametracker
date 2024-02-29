@@ -4,7 +4,6 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
 	import MetaScore from '$lib/components/MetaScore.svelte';
-	import ListUpdateBtn from '$lib/components/listUpdate/ListUpdateBtn.svelte';
 	import { user } from '$lib/stores/user';
 
 	export let data: PageData;
@@ -35,14 +34,15 @@
 					<div class="flex items-end justify-between">
 						<MetaScore score={result.metacritic} />
 						{#if $user}
-							<ListUpdateBtn
+							btn
+							<!-- <ListUpdateBtn
 								gameData={{
 									rawgId: result.id,
 									title: result.name,
 									rating: 0,
 									status: 0
 								}}
-							/>
+							/> -->
 						{/if}
 					</div>
 				</div>
