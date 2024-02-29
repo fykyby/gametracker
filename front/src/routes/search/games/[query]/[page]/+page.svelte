@@ -25,6 +25,7 @@
 							src={result.background_image ?? '/placeholder.png'}
 							alt={result.name}
 							class="object-cover w-full h-full rounded-l-[--radius]"
+							loading="lazy"
 						/>
 					</a>
 				</div>
