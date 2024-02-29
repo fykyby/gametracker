@@ -5,6 +5,7 @@
 	import DialogSignUp from './DialogSignUp.svelte';
 	import DialogLogIn from './DialogLogIn.svelte';
 	import { enhance } from '$app/forms';
+	import LoadingIndicator from './LoadingIndicator.svelte';
 
 	let formSignUpOpen: boolean = false;
 	let formLogInOpen: boolean = false;

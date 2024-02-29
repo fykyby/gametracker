@@ -1,10 +1,11 @@
 <script lang="ts">
-	import SearchForm from '../../../SearchForm.svelte';
+	import SearchForm from '../../../../../lib/components/FormSearch.svelte';
 	import type { PageData } from './$types';
 	import * as Card from '$lib/components/ui/card';
 	import { Separator } from '$lib/components/ui/separator';
 	import MetaScore from '$lib/components/MetaScore.svelte';
 	import { user } from '$lib/stores/user';
+	import LoadingIndicator from '$lib/components/LoadingIndicator.svelte';
 
 	export let data: PageData;
 </script>
@@ -14,8 +15,7 @@
 
 <ul class="flex flex-col gap-2">
 	{#await data.results}
-		<!-- TODO: loader -->
-		Loading
+		<LoadingIndicator />
 	{:then results}
 		{#each results as result (result.id)}
 			<li class="h-28 border rounded-[--radius] flex">
@@ -36,13 +36,13 @@
 						{#if $user}
 							btn
 							<!-- <ListUpdateBtn
-								gameData={{
-									rawgId: result.id,
-									title: result.name,
-									rating: 0,
-									status: 0
-								}}
-							/> -->
+											gameData={{
+												rawgId: result.id,
+												title: result.name,
+												rating: 0,
+												status: 0
+											}}
+										/> -->
 						{/if}
 					</div>
 				</div>

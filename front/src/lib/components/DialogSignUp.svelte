@@ -9,6 +9,7 @@
 	import { Button } from '$lib/components/ui/button';
 	import { getContext } from 'svelte';
 	import { user } from '$lib/stores/user';
+	import LoadingIndicator from './LoadingIndicator.svelte';
 
 	export let open: boolean;
 	let loading: boolean = false;
@@ -39,47 +40,51 @@
 			<Dialog.Title>Sign Up</Dialog.Title>
 		</Dialog.Header>
 
-		<form method="POST" use:enhance action="/actions/sign-up">
-			<Form.Field {form} name="email">
-				<Form.Control let:attrs>
-					<Form.Label>Email Address</Form.Label>
-					<Input {...attrs} bind:value={$formData.email} />
-				</Form.Control>
-				<Form.FieldErrors />
-			</Form.Field>
+		{#if loading}
+			<LoadingIndicator />
+		{:else}
+			<form method="POST" use:enhance action="/actions/sign-up">
+				<Form.Field {form} name="email">
+					<Form.Control let:attrs>
+						<Form.Label>Email Address</Form.Label>
+						<Input {...attrs} bind:value={$formData.email} />
+					</Form.Control>
+					<Form.FieldErrors />
+				</Form.Field>
 
-			<Form.Field {form} name="username">
-				<Form.Control let:attrs>
-					<Form.Label>Username</Form.Label>
-					<Input {...attrs} bind:value={$formData.username} />
-				</Form.Control>
-				<Form.FieldErrors />
-			</Form.Field>
+				<Form.Field {form} name="username">
+					<Form.Control let:attrs>
+						<Form.Label>Username</Form.Label>
+						<Input {...attrs} bind:value={$formData.username} />
+					</Form.Control>
+					<Form.FieldErrors />
+				</Form.Field>
 
-			<Form.Field {form} name="password">
-				<Form.Control let:attrs>
-					<Form.Label>Password</Form.Label>
-					<Input {...attrs} type="password" bind:value={$formData.password} />
-				</Form.Control>
-				<Form.FieldErrors />
-			</Form.Field>
+				<Form.Field {form} name="password">
+					<Form.Control let:attrs>
+						<Form.Label>Password</Form.Label>
+						<Input {...attrs} type="password" bind:value={$formData.password} />
+					</Form.Control>
+					<Form.FieldErrors />
+				</Form.Field>
 
-			<Form.Field {form} name="passwordConfirm">
-				<Form.Control let:attrs>
-					<Form.Label>Confirm Password</Form.Label>
-					<Input {...attrs} type="password" bind:value={$formData.passwordConfirm} />
-				</Form.Control>
-				<Form.FieldErrors />
-			</Form.Field>
+				<Form.Field {form} name="passwordConfirm">
+					<Form.Control let:attrs>
+						<Form.Label>Confirm Password</Form.Label>
+						<Input {...attrs} type="password" bind:value={$formData.passwordConfirm} />
+					</Form.Control>
+					<Form.FieldErrors />
+				</Form.Field>
 
-			{#if $message}
-				<AlertError message={$message} />
-			{/if}
+				{#if $message}
+					<AlertError message={$message} />
+				{/if}
 
-			<div class="formFooter">
-				<Button type="submit">Submit</Button>
-				<Button variant="secondary" on:click={() => (open = false)}>Cancel</Button>
-			</div>
-		</form>
+				<div class="formFooter">
+					<Button type="submit">Submit</Button>
+					<Button variant="secondary" on:click={() => (open = false)}>Cancel</Button>
+				</div>
+			</form>
+		{/if}
 	</Dialog.Content>
 </Dialog.Root>

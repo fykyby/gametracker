@@ -1,5 +1,5 @@
 <script>
-	import SearchForm from './SearchForm.svelte';
+	import FormSearch from '$lib/components/FormSearch.svelte';
 </script>
 
-<SearchForm />
+<FormSearch />

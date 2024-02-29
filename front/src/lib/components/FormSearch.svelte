@@ -5,7 +5,7 @@
 	import { onMount } from 'svelte';
 
 	export let initialQuery: string = '';
-	let query = '';
+	let query: string = '';
 
 	onMount(() => {
 		query = initialQuery;
