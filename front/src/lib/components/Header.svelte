@@ -35,10 +35,12 @@
 			</form>
 		{:else}
 			<Button variant="secondary" on:click={() => (formLogInOpen = true)}>Log In</Button>
-			<DialogLogIn bind:open={formLogInOpen} />
-
 			<Button on:click={() => (formSignUpOpen = true)}>Sign Up</Button>
-			<DialogSignUp bind:open={formSignUpOpen} />
 		{/if}
 	</div>
 </header>
+
+{#if !$user}
+	<DialogLogIn bind:open={formLogInOpen} />
+	<DialogSignUp bind:open={formSignUpOpen} />
+{/if}

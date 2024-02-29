@@ -33,39 +33,37 @@
 	const { form: formData, message, enhance } = form;
 </script>
 
-{#if data}
-	<Dialog.Root bind:open>
-		<Dialog.Content>
-			<Dialog.Header>
-				<Dialog.Title>Log In</Dialog.Title>
-			</Dialog.Header>
+<Dialog.Root bind:open>
+	<Dialog.Content>
+		<Dialog.Header>
+			<Dialog.Title>Log In</Dialog.Title>
+		</Dialog.Header>
 
-			<form method="POST" action="/actions/log-in" use:enhance>
-				<Form.Field {form} name="email">
-					<Form.Control let:attrs>
-						<Form.Label>Email Address</Form.Label>
-						<Input {...attrs} bind:value={$formData.email} />
-					</Form.Control>
-					<Form.FieldErrors />
-				</Form.Field>
+		<form method="POST" action="/actions/log-in" use:enhance>
+			<Form.Field {form} name="email">
+				<Form.Control let:attrs>
+					<Form.Label>Email Address</Form.Label>
+					<Input {...attrs} bind:value={$formData.email} />
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
 
-				<Form.Field {form} name="password">
-					<Form.Control let:attrs>
-						<Form.Label>Password</Form.Label>
-						<Input {...attrs} type="password" bind:value={$formData.password} />
-					</Form.Control>
-					<Form.FieldErrors />
-				</Form.Field>
+			<Form.Field {form} name="password">
+				<Form.Control let:attrs>
+					<Form.Label>Password</Form.Label>
+					<Input {...attrs} type="password" bind:value={$formData.password} />
+				</Form.Control>
+				<Form.FieldErrors />
+			</Form.Field>
 
-				{#if $message}
-					<AlertError message={$message} />
-				{/if}
+			{#if $message}
+				<AlertError message={$message} />
+			{/if}
 
-				<div class="formFooter">
-					<Button type="submit">Submit</Button>
-					<Button variant="secondary" on:click={() => (open = false)}>Cancel</Button>
-				</div>
-			</form>
-		</Dialog.Content>
-	</Dialog.Root>
-{/if}
+			<div class="formFooter">
+				<Button type="submit">Submit</Button>
+				<Button variant="secondary" on:click={() => (open = false)}>Cancel</Button>
+			</div>
+		</form>
+	</Dialog.Content>
+</Dialog.Root>
