@@ -21,7 +21,6 @@
 		validators: zodClient(updateListSchema),
 		onSubmit() {
 			loading = true;
-			console.log($formData);
 		},
 		onResult(e) {
 			loading = false;

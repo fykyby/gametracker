@@ -43,7 +43,7 @@
 		{#if loading}
 			<LoadingIndicator />
 		{:else}
-			<form method="POST" use:enhance action="/actions/sign-up">
+			<form method="POST" action="/actions/sign-up" use:enhance>
 				<Form.Field {form} name="email">
 					<Form.Control let:attrs>
 						<Form.Label>Email Address</Form.Label>
