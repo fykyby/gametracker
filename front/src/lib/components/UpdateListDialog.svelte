@@ -7,7 +7,7 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import AlertError from '$lib/components/AlertError.svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { getContext, onMount } from 'svelte';
+	import { getContext } from 'svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
 	import { GameDataStatus, type GameData, possibleRatings } from '$lib/types';
 	import getGameDataStatusKeys from '$lib/getGameDataStatusKeys';

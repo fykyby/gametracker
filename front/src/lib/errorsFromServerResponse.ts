@@ -1,6 +1,6 @@
 import type { SuperValidated } from 'sveltekit-superforms';
 
-// Convert response errors from PocketBase action to SuperForms validation errors
+// Convert response errors from PocketBase to SuperForms validation errors
 export default function errorsFromServerResponse(
 	form: SuperValidated<any>,
 	err: any
