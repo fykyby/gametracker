@@ -4,10 +4,8 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import { logInSchema } from '$lib/schemas';
 
-export const load: PageServerLoad = async ({ locals }) => {
-	if (locals.user) {
-		redirect(303, '/');
-	}
+export const load: PageServerLoad = async () => {
+	redirect(303, '/');
 };
 
 export const actions: Actions = {

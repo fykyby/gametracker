@@ -1,7 +1,12 @@
 import { updateListSchema } from '$lib/schemas';
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, type Actions, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async () => {
+	redirect(303, '/');
+};
 
 export const actions: Actions = {
 	default: async (event) => {
