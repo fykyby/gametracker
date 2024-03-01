@@ -1,5 +1,6 @@
 import { POCKETBASE_URL } from '$env/static/private';
 import getGenericErrorMessage from '$lib/getGenericErrorMessage';
+import type { HandleServerError } from '@sveltejs/kit';
 import PocketBase from 'pocketbase';
 
 const allowedHeaders = ['retry-after', 'content-type'];
@@ -29,11 +30,8 @@ export async function handle({ event, resolve }): Promise<Response> {
 	return response;
 }
 
-// Returns Promise<any> beacuse TypeScript
-// didn't like HandleServerError's return object
-// and I don't have the time to figure this out right now
-export async function handleError(): Promise<any> {
+export const handleError: HandleServerError = async () => {
 	return {
 		message: getGenericErrorMessage()
 	};
-}
+};

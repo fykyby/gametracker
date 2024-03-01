@@ -1,8 +1,9 @@
 import { logInSchema, signUpSchema, updateListSchema } from '$lib/schemas';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
+import type { LayoutServerLoad } from './$types';
 
-export const load = async ({ locals }: any) => {
+export const load: LayoutServerLoad = async ({ locals }) => {
 	return {
 		user: locals.user,
 		signUpForm: await superValidate(zod(signUpSchema)),

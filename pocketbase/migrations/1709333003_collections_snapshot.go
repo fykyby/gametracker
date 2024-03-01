@@ -15,7 +15,7 @@ func init() {
 			{
 				"id": "1vka21g5ftbl3ly",
 				"created": "2024-02-28 17:02:47.246Z",
-				"updated": "2024-02-28 19:34:08.674Z",
+				"updated": "2024-03-01 22:37:39.738Z",
 				"name": "lists",
 				"type": "base",
 				"system": false,
@@ -52,7 +52,7 @@ func init() {
 				],
 				"listRule": "",
 				"viewRule": "",
-				"createRule": "",
+				"createRule": "@request.auth.id = user.id",
 				"updateRule": "@request.auth.id = user.id",
 				"deleteRule": "@request.auth.id = user.id",
 				"options": {}
@@ -60,7 +60,7 @@ func init() {
 			{
 				"id": "g1oxno8kidhx0ij",
 				"created": "2024-02-28 17:11:51.056Z",
-				"updated": "2024-03-01 20:10:38.230Z",
+				"updated": "2024-03-01 22:09:16.059Z",
 				"name": "listItems",
 				"type": "base",
 				"system": false,
@@ -118,7 +118,7 @@ func init() {
 						"presentable": false,
 						"unique": false,
 						"options": {
-							"min": 0,
+							"min": 1,
 							"max": 5,
 							"noDecimal": true
 						}
@@ -151,7 +151,7 @@ func init() {
 			{
 				"id": "_pb_users_auth_",
 				"created": "2024-03-01 18:41:25.758Z",
-				"updated": "2024-03-01 18:41:25.769Z",
+				"updated": "2024-03-01 20:31:44.348Z",
 				"name": "users",
 				"type": "auth",
 				"system": false,
