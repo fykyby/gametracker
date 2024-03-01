@@ -6,7 +6,7 @@
 	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Input } from './ui/input';
-	import AlertError from '$lib/components/AlertError.svelte';
+	import ErrorAlert from '$lib/components/ErrorAlert.svelte';
 	import { Button } from './ui/button';
 	import { user } from '$lib/stores/user';
 	import LoadingIndicator from './LoadingIndicator.svelte';
@@ -58,7 +58,7 @@
 				</Form.Field>
 
 				{#if $message}
-					<AlertError message={$message} />
+					<ErrorAlert message={$message} />
 				{/if}
 
 				<div class="formFooter">

@@ -3,7 +3,6 @@ import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import { logInSchema } from '$lib/schemas';
-import getGenericErrorMessage from '$lib/getGenericErrorMessage';
 
 export const load: PageServerLoad = async () => {
 	redirect(303, '/');
@@ -25,7 +24,7 @@ export const actions: Actions = {
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
-			form.message = getGenericErrorMessage();
+			form.message = 'Authentication failed.';
 			return fail(400, {
 				form
 			});

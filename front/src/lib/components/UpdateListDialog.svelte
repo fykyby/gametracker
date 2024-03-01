@@ -5,7 +5,7 @@
 	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
 	import { updateListSchema, type UpdateListSchema } from '$lib/schemas';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import AlertError from '$lib/components/AlertError.svelte';
+	import ErrorAlert from '$lib/components/ErrorAlert.svelte';
 	import { Button } from '$lib/components/ui/button';
 	import { getContext } from 'svelte';
 	import LoadingIndicator from './LoadingIndicator.svelte';
@@ -121,7 +121,7 @@
 				{/if}
 
 				{#if $message}
-					<AlertError message={$message} />
+					<ErrorAlert message={$message} />
 				{/if}
 
 				<div class="formFooter">
