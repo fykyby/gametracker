@@ -5,8 +5,9 @@ import (
 
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
+
 	// uncomment once you have at least one .go migration file in the "migrations" directory
-	// _ "github.com/fykyby/gametracker/migrations"
+	_ "github.com/fykyby/gametracker/migrations"
 )
 
 func main() {

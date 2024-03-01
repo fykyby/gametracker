@@ -26,6 +26,7 @@ export const actions: Actions = {
 				isPrivate: false
 			});
 		} catch (err: any) {
+			console.log(err);
 			if (user) {
 				await event.locals.pb
 					.collection('users')
@@ -45,6 +46,7 @@ export const actions: Actions = {
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
 			form.message = err.response.message;
+
 			return fail(400, {
 				form: errorsFromServerResponse(form, err)
 			});

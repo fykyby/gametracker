@@ -14,23 +14,18 @@
 
 	export let gameData: GameData;
 	export let open: boolean;
-	let loading = false;
 	const data: SuperValidated<Infer<UpdateListSchema>> = getContext('updateListForm');
 
 	const form = superForm(data, {
 		validators: zodClient(updateListSchema),
-		onSubmit() {
-			loading = true;
-		},
 		onResult(e) {
-			loading = false;
 			if (e.result.type !== 'success') return;
 
 			open = false;
 		}
 	});
 
-	const { form: formData, message, enhance } = form;
+	const { form: formData, message, enhance, delayed } = form;
 
 	$: selectedStatus = {
 		value: $formData.status,
@@ -55,7 +50,7 @@
 			<Dialog.Title>{gameData.title}</Dialog.Title>
 		</Dialog.Header>
 
-		{#if loading}
+		{#if $delayed}
 			<LoadingIndicator />
 		{:else}
 			<form method="POST" action="/actions/update-list" use:enhance>

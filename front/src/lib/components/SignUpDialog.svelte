@@ -12,16 +12,11 @@
 	import LoadingIndicator from './LoadingIndicator.svelte';
 
 	export let open: boolean;
-	let loading: boolean = false;
 	const data: SuperValidated<Infer<SignUpSchema>> = getContext('signUpForm');
 
 	const form = superForm(data, {
 		validators: zodClient(signUpSchema),
-		onSubmit() {
-			loading = true;
-		},
 		onResult(e) {
-			loading = false;
 			if (e.result.type !== 'success') return;
 
 			$user = {
@@ -31,7 +26,7 @@
 		}
 	});
 
-	const { form: formData, message, enhance } = form;
+	const { form: formData, message, enhance, delayed } = form;
 </script>
 
 <Dialog.Root bind:open>
@@ -40,7 +35,7 @@
 			<Dialog.Title>Sign Up</Dialog.Title>
 		</Dialog.Header>
 
-		{#if loading}
+		{#if $delayed}
 			<LoadingIndicator />
 		{:else}
 			<form method="POST" action="/actions/sign-up" use:enhance>

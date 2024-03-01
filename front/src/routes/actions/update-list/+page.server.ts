@@ -10,15 +10,15 @@ export const load: PageServerLoad = async () => {
 
 export const actions: Actions = {
 	default: async (event) => {
-		console.log(event);
-		// const form = await superValidate(event, zod(updateListSchema));
-		// console.log(form);
-		// if (!form.valid) {
-		// 	return fail(400, {
-		// 		form
-		// 	});
-		// }
+		const form = await superValidate(event, zod(updateListSchema));
+		console.log(form);
+		if (!form.valid) {
+			return fail(400, {
+				form
+			});
+		}
 
+		return { form };
 		// form.message = 'err';
 		// return fail(400, {
 		// 	form

@@ -1,5 +1,5 @@
 export type GameData = {
-	rawgId: string;
+	rawgId: number;
 	title: string;
 	status: GameDataStatus;
 	rating: GameDataRating;

@@ -13,55 +13,6 @@ func init() {
 	m.Register(func(db dbx.Builder) error {
 		jsonData := `[
 			{
-				"id": "_pb_users_auth_",
-				"created": "2024-02-28 12:26:41.165Z",
-				"updated": "2024-02-28 12:30:30.589Z",
-				"name": "users",
-				"type": "auth",
-				"system": false,
-				"schema": [
-					{
-						"system": false,
-						"id": "users_avatar",
-						"name": "avatar",
-						"type": "file",
-						"required": false,
-						"presentable": false,
-						"unique": false,
-						"options": {
-							"mimeTypes": [
-								"image/jpeg",
-								"image/png",
-								"image/svg+xml",
-								"image/gif",
-								"image/webp"
-							],
-							"thumbs": null,
-							"maxSelect": 1,
-							"maxSize": 5242880,
-							"protected": false
-						}
-					}
-				],
-				"indexes": [],
-				"listRule": "id = @request.auth.id",
-				"viewRule": "id = @request.auth.id",
-				"createRule": "",
-				"updateRule": "id = @request.auth.id",
-				"deleteRule": "id = @request.auth.id",
-				"options": {
-					"allowEmailAuth": true,
-					"allowOAuth2Auth": false,
-					"allowUsernameAuth": false,
-					"exceptEmailDomains": null,
-					"manageRule": null,
-					"minPasswordLength": 6,
-					"onlyEmailDomains": null,
-					"onlyVerified": false,
-					"requireEmail": true
-				}
-			},
-			{
 				"id": "1vka21g5ftbl3ly",
 				"created": "2024-02-28 17:02:47.246Z",
 				"updated": "2024-02-28 19:34:08.674Z",
@@ -109,7 +60,7 @@ func init() {
 			{
 				"id": "g1oxno8kidhx0ij",
 				"created": "2024-02-28 17:11:51.056Z",
-				"updated": "2024-02-29 22:59:57.129Z",
+				"updated": "2024-03-01 20:10:38.230Z",
 				"name": "listItems",
 				"type": "base",
 				"system": false,
@@ -132,16 +83,16 @@ func init() {
 					},
 					{
 						"system": false,
-						"id": "xqqma1al",
+						"id": "5d0d5mza",
 						"name": "rawgId",
-						"type": "text",
-						"required": true,
+						"type": "number",
+						"required": false,
 						"presentable": false,
 						"unique": false,
 						"options": {
-							"min": null,
+							"min": 0,
 							"max": null,
-							"pattern": ""
+							"noDecimal": true
 						}
 					},
 					{
@@ -196,6 +147,55 @@ func init() {
 				"updateRule": "@request.auth.id = list.user.id",
 				"deleteRule": "@request.auth.id = list.user.id",
 				"options": {}
+			},
+			{
+				"id": "_pb_users_auth_",
+				"created": "2024-03-01 18:41:25.758Z",
+				"updated": "2024-03-01 18:41:25.769Z",
+				"name": "users",
+				"type": "auth",
+				"system": false,
+				"schema": [
+					{
+						"system": false,
+						"id": "users_avatar",
+						"name": "avatar",
+						"type": "file",
+						"required": false,
+						"presentable": false,
+						"unique": false,
+						"options": {
+							"mimeTypes": [
+								"image/jpeg",
+								"image/png",
+								"image/svg+xml",
+								"image/gif",
+								"image/webp"
+							],
+							"thumbs": null,
+							"maxSelect": 1,
+							"maxSize": 5242880,
+							"protected": false
+						}
+					}
+				],
+				"indexes": [],
+				"listRule": "id = @request.auth.id",
+				"viewRule": "id = @request.auth.id",
+				"createRule": "",
+				"updateRule": "id = @request.auth.id",
+				"deleteRule": "id = @request.auth.id",
+				"options": {
+					"allowEmailAuth": true,
+					"allowOAuth2Auth": false,
+					"allowUsernameAuth": false,
+					"exceptEmailDomains": null,
+					"manageRule": null,
+					"minPasswordLength": 6,
+					"onlyEmailDomains": null,
+					"onlyVerified": false,
+					"requireEmail": true
+				}
 			}
 		]`
 
