@@ -12,9 +12,7 @@ export const actions: Actions = {
 	default: async (event) => {
 		const form = await superValidate(event, zod(updateListSchema));
 		console.log(form);
-
-		throw new Error();
-
+		// throw new Error();
 		if (!form.valid) {
 			return fail(400, {
 				form

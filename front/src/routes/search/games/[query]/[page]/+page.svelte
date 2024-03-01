@@ -7,6 +7,7 @@
 	import { user } from '$lib/stores/user';
 	import LoadingIndicator from '$lib/components/LoadingIndicator.svelte';
 	import UpdateListButton from '$lib/components/UpdateListButton.svelte';
+	import AlertError from '$lib/components/AlertError.svelte';
 
 	export let data: PageData;
 </script>
@@ -51,5 +52,7 @@
 				</div>
 			</li>
 		{/each}
+	{:catch error}
+		<AlertError message={error.message} />
 	{/await}
 </ul>

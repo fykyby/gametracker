@@ -19,6 +19,7 @@
 	const form = superForm(data, {
 		validators: zodClient(updateListSchema),
 		dataType: 'json',
+		invalidateAll: false,
 		onResult(e) {
 			if (e.result.type !== 'success') return;
 
