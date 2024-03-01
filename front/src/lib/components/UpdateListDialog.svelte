@@ -11,6 +11,7 @@
 	import LoadingIndicator from './LoadingIndicator.svelte';
 	import { GameDataStatus, type GameData, possibleRatings } from '$lib/types';
 	import getGameDataStatusKeys from '$lib/getGameDataStatusKeys';
+	import formatPascalCase from '$lib/formatPascalCase';
 
 	export let gameData: GameData;
 	export let open: boolean;
@@ -40,7 +41,7 @@
 
 	$: selectedStatus = {
 		value: $formData.status,
-		label: GameDataStatus[$formData.status]
+		label: formatPascalCase(GameDataStatus[$formData.status])
 	};
 
 	$: selectedRating = {
@@ -85,7 +86,7 @@
 							</Select.Trigger>
 							<Select.Content>
 								{#each getGameDataStatusKeys() as key}
-									<Select.Item value={GameDataStatus[key]}>{key}</Select.Item>
+									<Select.Item value={GameDataStatus[key]}>{formatPascalCase(key)}</Select.Item>
 								{/each}
 							</Select.Content>
 						</Select.Root>
