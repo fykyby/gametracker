@@ -48,12 +48,14 @@
 		label: $formData.rating > 0 ? $formData.rating.toString() : 'None'
 	};
 
-	onMount(() => {
+	$: open && loadGameData();
+
+	function loadGameData() {
 		$formData.rawgId = gameData.rawgId;
 		$formData.title = gameData.title;
 		$formData.status = gameData.status;
 		$formData.rating = gameData.rating;
-	});
+	}
 </script>
 
 <Dialog.Root bind:open>
