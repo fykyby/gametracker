@@ -4,6 +4,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 import errorsFromServerResponse from '$lib/errorsFromServerResponse';
 import { signUpSchema } from '$lib/schemas';
+import getGenericErrorMessage from '$lib/getGenericErrorMessage';
 
 export const load: PageServerLoad = async () => {
 	redirect(303, '/');
@@ -26,7 +27,6 @@ export const actions: Actions = {
 				isPrivate: false
 			});
 		} catch (err: any) {
-			console.log(err);
 			if (user) {
 				await event.locals.pb
 					.collection('users')
@@ -34,7 +34,7 @@ export const actions: Actions = {
 				await event.locals.pb.collection('users').delete(user.id);
 			}
 
-			form.message = err.response.message;
+			form.message = getGenericErrorMessage();
 			return fail(400, {
 				form: errorsFromServerResponse(form, err)
 			});
@@ -45,8 +45,7 @@ export const actions: Actions = {
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
 		} catch (err: any) {
-			form.message = err.response.message;
-
+			form.message = getGenericErrorMessage();
 			return fail(400, {
 				form: errorsFromServerResponse(form, err)
 			});

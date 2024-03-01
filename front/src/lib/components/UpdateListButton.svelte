@@ -16,4 +16,4 @@
 	{/if}
 </Button>
 
-<UpdateListDialog bind:open {gameData} />
+<UpdateListDialog bind:open bind:gameData />

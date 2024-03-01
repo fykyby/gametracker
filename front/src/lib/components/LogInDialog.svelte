@@ -28,7 +28,6 @@
 			$message = e.result.error.message;
 		}
 	});
-
 	const { form: formData, message, enhance, delayed } = form;
 </script>
 

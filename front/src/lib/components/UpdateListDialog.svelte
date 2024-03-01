@@ -20,6 +20,9 @@
 		validators: zodClient(updateListSchema),
 		dataType: 'json',
 		invalidateAll: false,
+		warnings: {
+			duplicateId: false
+		},
 		onResult(e) {
 			if (e.result.type !== 'success') return;
 
@@ -44,6 +47,7 @@
 
 	onMount(() => {
 		$formData.rawgId = gameData.rawgId;
+		$formData.title = gameData.title;
 		$formData.status = gameData.status;
 		$formData.rating = gameData.rating;
 	});
