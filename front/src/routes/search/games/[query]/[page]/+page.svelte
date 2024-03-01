@@ -35,7 +35,7 @@
 					<Card.Title class="line-clamp-2">
 						<a href="/game/{result.id}">{result.name}</a>
 					</Card.Title>
-					<Card.Description class="flex-grow">{result.released}</Card.Description>
+					<Card.Description class="flex-grow">{result.released ?? ''}</Card.Description>
 					<div class="flex items-end justify-between">
 						<MetaScore score={result.metacritic} />
 						{#if $user}
