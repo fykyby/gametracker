@@ -18,10 +18,14 @@
 
 	const form = superForm(data, {
 		validators: zodClient(updateListSchema),
+		dataType: 'json',
 		onResult(e) {
 			if (e.result.type !== 'success') return;
 
 			open = false;
+		},
+		onError(e) {
+			$message = e.result.error.message;
 		}
 	});
 

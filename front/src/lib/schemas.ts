@@ -24,8 +24,8 @@ export const signUpSchema = z
 export type SignUpSchema = typeof signUpSchema;
 
 export const updateListSchema = z.object({
-	rawgId: z.number().min(0, 'Incorrect game ID.'),
-	status: z.number().min(0, 'Incorrect status.').max(5, 'Incorrect status.'),
-	rating: z.number().min(0, 'Incorrect rating.').max(10, 'Incorrect rating.')
+	rawgId: z.number(), // .min(0, 'Incorrect game ID.'),
+	status: z.number(), //.min(0, 'Incorrect status.').max(5, 'Incorrect status.'),
+	rating: z.number() //.min(0, 'Incorrect rating.').max(10, 'Incorrect rating.')
 });
 export type UpdateListSchema = typeof updateListSchema;

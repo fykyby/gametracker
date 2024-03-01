@@ -23,6 +23,9 @@
 				id: e.result.data?.user.record.id
 			};
 			open = false;
+		},
+		onError(e) {
+			$message = e.result.error.message;
 		}
 	});
 
