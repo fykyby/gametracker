@@ -109,7 +109,7 @@ func init() {
 			{
 				"id": "g1oxno8kidhx0ij",
 				"created": "2024-02-28 17:11:51.056Z",
-				"updated": "2024-02-28 20:43:57.419Z",
+				"updated": "2024-02-29 22:59:57.129Z",
 				"name": "listItems",
 				"type": "base",
 				"system": false,
@@ -187,12 +187,14 @@ func init() {
 						}
 					}
 				],
-				"indexes": [],
-				"listRule": null,
-				"viewRule": null,
-				"createRule": null,
-				"updateRule": null,
-				"deleteRule": null,
+				"indexes": [
+					"CREATE INDEX ` + "`" + `idx_FxKVrtm` + "`" + ` ON ` + "`" + `listItems` + "`" + ` (\n  ` + "`" + `list` + "`" + `,\n  ` + "`" + `rawgId` + "`" + `\n)"
+				],
+				"listRule": "",
+				"viewRule": "",
+				"createRule": "@request.auth.id = list.user.id",
+				"updateRule": "@request.auth.id = list.user.id",
+				"deleteRule": "@request.auth.id = list.user.id",
 				"options": {}
 			}
 		]`
