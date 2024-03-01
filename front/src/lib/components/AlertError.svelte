@@ -1,8 +1,9 @@
 <script lang="ts">
 	import AlertCircle from 'lucide-svelte/icons/alert-circle';
 	import * as Alert from '$lib/components/ui/alert';
+	import getGenericErrorMessage from '$lib/getGenericErrorMessage';
 
-	export let message: string = 'An unknown error has occurred.';
+	export let message: string = getGenericErrorMessage();
 </script>
 
 <Alert.Root variant="destructive" class="alert mt-2 mb-4">

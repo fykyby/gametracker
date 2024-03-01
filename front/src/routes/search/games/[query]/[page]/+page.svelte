@@ -52,7 +52,7 @@
 				</div>
 			</li>
 		{/each}
-	{:catch error}
-		<AlertError message={error.message} />
+	{:catch _}
+		<AlertError />
 	{/await}
 </ul>
