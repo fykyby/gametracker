@@ -26,6 +26,9 @@
 		onResult(e) {
 			if (e.result.type !== 'success') return;
 
+			gameData.status = e.result.data?.form.data.status;
+			gameData.rating = e.result.data?.form.data.rating;
+
 			open = false;
 		},
 		onError(e) {
