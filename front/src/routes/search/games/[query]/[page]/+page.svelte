@@ -52,7 +52,7 @@
 				</div>
 			</li>
 		{/each}
-	{:catch _}
+	{:catch err}
 		<ErrorAlert />
 	{/await}
 </ul>

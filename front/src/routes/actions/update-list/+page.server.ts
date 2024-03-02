@@ -5,6 +5,7 @@ import { zod } from 'sveltekit-superforms/adapters';
 import type { PageServerLoad } from './$types';
 import { GameDataStatus } from '$lib/types';
 import getGenericErrorMessage from '$lib/getGenericErrorMessage';
+import type { RecordModel } from 'pocketbase';
 
 export const load: PageServerLoad = async () => {
 	redirect(303, '/');
@@ -21,17 +22,20 @@ export const actions: Actions = {
 		}
 
 		try {
-			const list = (
-				await event.locals.pb.collection('lists').getList(1, 1, {
-					filter: `user.id = '${event.locals.user.id}'`
-				})
-			).items[0];
+			const list = await event.locals.pb
+				.collection('lists')
+				.getFirstListItem(`user.id = '${event.locals.user.id}'`);
 
-			const item = (
-				await event.locals.pb.collection('listItems').getList(1, 1, {
-					filter: `list.id = '${list.id}' && rawgId = '${form.data.rawgId}'`
-				})
-			).items[0];
+			let item: RecordModel | null = null;
+			try {
+				// try/catch block because getFirstListItem
+				// returns an error if item hasn't been found
+				item = await event.locals.pb
+					.collection('listItems')
+					.getFirstListItem(`list.id = '${list.id}' && rawgId = '${form.data.rawgId}'`);
+			} catch (err: unknown) {
+				item = null;
+			}
 
 			const newItem = {
 				list: list.id,
@@ -51,7 +55,8 @@ export const actions: Actions = {
 			} else {
 				await event.locals.pb.collection('listItems').update(item.id, newItem);
 			}
-		} catch (err: any) {
+		} catch (err: unknown) {
+			console.log(err);
 			form.message = getGenericErrorMessage();
 			return fail(400, {
 				form

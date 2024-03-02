@@ -11,11 +11,9 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 	let listItems: Array<any> = [];
 	if (locals.user) {
 		try {
-			const list = (
-				await locals.pb.collection('lists').getList(1, 1, {
-					filter: `user.id = '${locals.user.id}'`
-				})
-			).items[0];
+			const list = await locals.pb
+				.collection('lists')
+				.getFirstListItem(`user.id = '${locals.user.id}'`);
 
 			const items = await locals.pb.collection('listItems').getFullList({
 				filter: `list.id = '${list.id}'`
