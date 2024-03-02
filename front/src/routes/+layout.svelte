@@ -4,6 +4,7 @@
 	import type { PageData } from './$types';
 	import { user } from '$lib/stores/user';
 	import { setContext } from 'svelte';
+	import UpdateListDialog from '$lib/components/UpdateListDialog.svelte';
 
 	export let data: PageData;
 
@@ -21,6 +22,7 @@
 </script>
 
 <Header />
+<UpdateListDialog />
 
 <main class="flex flex-col gap-2 p-2 flex-grow">
 	<slot />
