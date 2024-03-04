@@ -31,6 +31,10 @@ h2 {
 	@apply text-lg;
 }
 
+h3 {
+	@apply text-lg;
+}
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;
@@ -77,10 +81,10 @@ h2 {
 		--ring: 263.4 70% 50.4%;
 
 		/* my vars */
-		--success: rgb(55, 124, 71);
-		--success-foreground: rgb(255, 255, 255);
-		--warning: rgb(202, 187, 56);
-		--warning-foreground: rgb(0, 0, 0);
+		--success: #21b356;
+		--success-foreground: black;
+		--warning: #e2b913;
+		--warning-foreground: black;
 	}
 }
 

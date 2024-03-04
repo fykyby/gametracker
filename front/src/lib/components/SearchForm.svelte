@@ -5,7 +5,9 @@
 	import { onMount } from 'svelte';
 
 	export let initialQuery: string = '';
-	export let autofocus: boolean = false;
+	export let autoFocus: boolean = false;
+	export let buttonVariantDefault: boolean = true;
+
 	let query: string = '';
 
 	onMount(() => {
@@ -14,13 +16,13 @@
 </script>
 
 <form action="/search/games/{query}/1" class="flex flex-row w-full gap-2 flex-nowrap">
-	{#if autofocus}
+	{#if autoFocus}
 		<Input type="text" required placeholder="Search..." bind:value={query} autofocus />
 	{:else}
 		<Input type="text" required placeholder="Search..." bind:value={query} />
 	{/if}
 
-	<Button type="submit" size="icon" class="flex-shrink-0">
+	<Button type="submit" size="icon" variant={buttonVariantDefault ? 'default' : 'secondary'}>
 		<Search />
 	</Button>
 </form>

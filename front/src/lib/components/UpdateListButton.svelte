@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Scroll, ScrollText } from 'lucide-svelte';
+	import { ScrollText, Plus } from 'lucide-svelte';
 	import Button from './ui/button/button.svelte';
 	import { GameDataStatus, type GameData } from '$lib/types';
 	import { updateListDialog } from '$lib/stores/updateListDialog';
@@ -15,10 +15,10 @@
 	}
 </script>
 
-<Button on:click={openDialog} variant="secondary" size="icon">
-	{#if gameData.status !== GameDataStatus.None}
-		<ScrollText />
+<Button on:click={openDialog} size="icon" variant="default">
+	{#if gameData.status === GameDataStatus.None}
+		<Plus />
 	{:else}
-		<Scroll />
+		<ScrollText />
 	{/if}
 </Button>
