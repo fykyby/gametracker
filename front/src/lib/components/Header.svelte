@@ -12,9 +12,11 @@
 </script>
 
 <header class="border-b shadow">
-	<div class="w-full flex flex-col mn:flex-row p-2 gap-2 items-center max-w-7xl mx-auto">
+	<div
+		class="w-full flex flex-col mn:flex-row p-2 md:p-3 gap-2 md:gap-3 items-center max-w-7xl mx-auto"
+	>
 		<div class="flex-grow">
-			<Button href="/" variant="ghost" class="text-lg">gametracker</Button>
+			<Button href="/" variant="ghost" class="text-xl md:text-2xl">gametracker</Button>
 		</div>
 		<div class="flex gap-2">
 			{#if !$page.url.pathname.includes('/search')}

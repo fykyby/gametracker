@@ -24,6 +24,6 @@
 <Header />
 <UpdateListDialog />
 
-<main class="flex flex-col gap-2 p-2 flex-grow w-full max-w-7xl mx-auto">
+<main class="flex flex-col gap-2 md:gap-3 p-2 md:p-3 flex-grow w-full max-w-7xl mx-auto">
 	<slot />
 </main>
