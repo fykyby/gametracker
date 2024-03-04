@@ -43,12 +43,10 @@
 		label: $formData.rating > 0 ? $formData.rating.toString() : 'None'
 	};
 
-	$: $updateListDialog.isOpen || !$updateListDialog.isOpen, onOpenChange();
+	$: $updateListDialog.isOpen, onOpen();
 
-	function onOpenChange() {
-		if ($updateListDialog.isOpen) {
-			$formData = $updateListDialog.gameData;
-		}
+	function onOpen() {
+		$formData = $updateListDialog.gameData;
 	}
 </script>
 

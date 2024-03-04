@@ -15,7 +15,12 @@
 	}
 </script>
 
-<Button on:click={openDialog} size="icon" variant="default">
+<Button
+	on:click={openDialog}
+	size="icon"
+	variant="default"
+	aria-label="update item status on your list"
+>
 	{#if gameData.status === GameDataStatus.None}
 		<Plus />
 	{:else}

@@ -20,7 +20,7 @@
 		</div>
 		<div class="flex gap-2">
 			{#if !$page.url.pathname.includes('/search')}
-				<Button variant="secondary" size="icon" href="/search">
+				<Button aria-label="search" variant="secondary" size="icon" href="/search">
 					<Search />
 				</Button>
 			{/if}

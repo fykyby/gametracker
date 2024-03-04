@@ -24,7 +24,7 @@ h2 {
 }
 
 h1 {
-	@apply text-xl ml-2;
+	@apply text-xl md:text-2xl;
 }
 
 h2 {

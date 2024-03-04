@@ -21,6 +21,10 @@
 	setContext('updateListForm', data.updateListForm);
 </script>
 
+<svelte:head>
+	<title>gametracker</title>
+</svelte:head>
+
 <Header />
 <UpdateListDialog />
 
