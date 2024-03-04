@@ -53,7 +53,7 @@
 </script>
 
 {#if $updateListDialog.gameData}
-	<Dialog.Root bind:open={$updateListDialog.isOpen}>
+	<Dialog.Root bind:open={$updateListDialog.isOpen} closeOnOutsideClick={false}>
 		<Dialog.Content>
 			<Dialog.Header>
 				<Dialog.Title>{$updateListDialog.gameData.title}</Dialog.Title>

@@ -32,7 +32,7 @@
 	const { form: formData, message, enhance, delayed } = form;
 </script>
 
-<Dialog.Root bind:open>
+<Dialog.Root bind:open closeOnOutsideClick={false}>
 	<Dialog.Content>
 		<Dialog.Header>
 			<Dialog.Title>Sign Up</Dialog.Title>
