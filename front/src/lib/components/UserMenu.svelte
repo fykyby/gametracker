@@ -16,11 +16,10 @@
 			</Button>
 		</DropdownMenu.Trigger>
 		<DropdownMenu.Content>
+			<DropdownMenu.Label class="text-center">{$user.username}</DropdownMenu.Label>
+			<DropdownMenu.Separator />
 			<DropdownMenu.Group>
-				<DropdownMenu.Label>My Account</DropdownMenu.Label>
-				<DropdownMenu.Separator />
-				<DropdownMenu.Item href="/user/{$user.username}">Profile</DropdownMenu.Item>
-				<DropdownMenu.Item href="/user/{$user.username}/list">List</DropdownMenu.Item>
+				<DropdownMenu.Item href="/user/{$user.username}">List</DropdownMenu.Item>
 				<DropdownMenu.Item on:click={() => logOutButton.click()}>
 					Log Out
 					<form

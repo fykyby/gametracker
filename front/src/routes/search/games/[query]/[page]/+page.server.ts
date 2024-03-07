@@ -1,5 +1,6 @@
 import { RAWG_API_KEY, RAWG_URL } from '$env/static/private';
 import { PUBLIC_SEARCH_PAGE_SIZE } from '$env/static/public';
+import type { RecordModel } from 'pocketbase';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
@@ -8,19 +9,17 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 			`/games?key=${RAWG_API_KEY}&page=${params.page}&page_size=${PUBLIC_SEARCH_PAGE_SIZE}&search=${params.query}`
 	);
 
-	let listItems: Array<any> = [];
+	let listItems: RecordModel[] = [];
 	if (locals.user) {
 		try {
 			const list = await locals.pb
 				.collection('lists')
 				.getFirstListItem(`user.id = '${locals.user.id}'`);
 
-			const items = await locals.pb.collection('listItems').getFullList({
+			listItems = await locals.pb.collection('listItems').getFullList({
 				filter: `list.id = '${list.id}'`
 			});
-
-			listItems = items;
-		} catch (err) {
+		} catch (_) {
 			listItems = [];
 		}
 	}
@@ -30,8 +29,8 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		results: searchRes
 			.then((res) => res.json())
 			.then((res) =>
-				res.results.map((res: any) => {
-					const itemIndex = listItems.findIndex((item) => parseInt(item.rawgId) === res.id);
+				res.results.map((res: RecordModel) => {
+					const itemIndex = listItems.findIndex((item) => item.rawgId === res.id);
 					return {
 						...res,
 						statusData: {

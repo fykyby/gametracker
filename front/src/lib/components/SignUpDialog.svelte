@@ -20,7 +20,8 @@
 			if (e.result.type !== 'success') return;
 
 			$user = {
-				id: e.result.data?.user.id
+				id: e.result.data?.user.id,
+				username: e.result.data?.user.username
 			};
 			open = false;
 		},
