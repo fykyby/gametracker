@@ -21,16 +21,16 @@
 </script>
 
 <li>
-	<Card.Root>
-		<Card.Content class="p-0 relative">
+	<Card.Root class="overflow-hidden group">
+		<Card.Content class="p-0 relative overflow-hidden">
 			{#if result.metacritic}
-				<div class="absolute left-0 m-2 shadow-sm">
+				<div class="absolute left-0 m-2 shadow-sm z-10">
 					<MetaScore score={result.metacritic} />
 				</div>
 			{/if}
 
 			{#if $user}
-				<div class="absolute right-0 m-2 shadow-sm">
+				<div class="absolute right-0 m-2 shadow-sm z-10">
 					<UpdateListButton
 						gameData={{
 							rawgId: result.id,
@@ -42,11 +42,11 @@
 				</div>
 			{/if}
 
-			<a href="/game/{result.id}">
+			<a href="/game/{result.id}" class="">
 				<img
 					src={result.background_image ?? '/placeholder.png'}
 					alt={result.name}
-					class="object-cover w-full h-64 rounded-t-[--radius]"
+					class="object-cover w-full h-64 rounded-t-[--radius] group-hover:scale-105 transition-transform"
 					loading="lazy"
 				/>
 			</a>
