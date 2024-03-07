@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 type LocalUser =
 	| {
 			id: string;
+			username: string;
 	  }
 	| undefined;
 

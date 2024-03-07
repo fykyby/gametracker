@@ -12,7 +12,8 @@
 		$user = undefined;
 	} else {
 		$user = {
-			id: data.user.id
+			id: data.user.id,
+			username: data.user.username
 		};
 	}
 
