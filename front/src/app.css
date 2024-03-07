@@ -35,6 +35,12 @@ h3 {
 	@apply text-lg;
 }
 
+@layer components {
+	.my-ring {
+		@apply ring-offset-background outline-none ring-2 ring-ring ring-offset-2;
+	}
+}
+
 @layer base {
 	:root {
 		--background: 0 0% 100%;

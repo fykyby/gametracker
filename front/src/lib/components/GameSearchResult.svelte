@@ -21,16 +21,25 @@
 </script>
 
 <li>
-	<Card.Root class="overflow-hidden group">
-		<Card.Content class="p-0 relative overflow-hidden">
+	<Card.Root class="group has-[div>a:focus-visible]:my-ring overflow-clip">
+		<Card.Content class="p-0 relative overflow-clip">
+			<a href="/game/{result.id}" class="[&:focus-visible>img]:scale-105">
+				<img
+					src={result.background_image ?? '/placeholder.png'}
+					alt={result.name}
+					class="object-cover w-full h-64 rounded-t-[--radius] scale-100 group-hover:scale-105 transition-transform"
+					loading="lazy"
+				/>
+			</a>
+
 			{#if result.metacritic}
-				<div class="absolute left-0 m-2 shadow-sm z-10">
+				<div class="absolute top-0 left-0 m-2 shadow-sm z-10">
 					<MetaScore score={result.metacritic} />
 				</div>
 			{/if}
 
 			{#if $user}
-				<div class="absolute right-0 m-2 shadow-sm z-10">
+				<div class="absolute top-0 right-0 m-2 shadow-sm z-10">
 					<UpdateListButton
 						gameData={{
 							rawgId: result.id,
@@ -41,18 +50,9 @@
 					/>
 				</div>
 			{/if}
-
-			<a href="/game/{result.id}" class="">
-				<img
-					src={result.background_image ?? '/placeholder.png'}
-					alt={result.name}
-					class="object-cover w-full h-64 rounded-t-[--radius] group-hover:scale-105 transition-transform"
-					loading="lazy"
-				/>
-			</a>
 		</Card.Content>
 
-		<a href="/game/{result.id}">
+		<a href="/game/{result.id}" tabindex={-1}>
 			<Card.Header class="p-4 flex flex-row justify-between">
 				<div class="truncate">
 					<Card.Title class="truncate">{result.name}</Card.Title>
