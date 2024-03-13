@@ -1,4 +1,5 @@
 <script lang="ts">
+	export let isColored: boolean = true;
 	export let score: number | null;
 
 	const classList: string = getClassList(score);
@@ -15,7 +16,9 @@
 </script>
 
 <span
-	class="h-10 w-10 text-lg font-semibold rounded-[--radius] flex flex-shrink-0 items-center justify-center {classList}"
+	class="h-10 w-10 text-lg font-semibold rounded-[--radius] flex flex-shrink-0 items-center justify-center {isColored
+		? classList
+		: 'bg-muted text-foreground'}"
 >
-	{score ?? '-'}
+	{!score || score === 0 ? '-' : score}
 </span>

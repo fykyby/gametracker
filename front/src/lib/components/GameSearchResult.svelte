@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card';
-	import MetaScore from './MetaScore.svelte';
+	import Score from './Score.svelte';
 	import UpdateListButton from '$lib/components/UpdateListButton.svelte';
 	import type { GameDataRating, GameDataStatus } from '$lib/types';
 	import { user } from '$lib/stores/user';
@@ -34,7 +34,7 @@
 
 			{#if result.metacritic}
 				<div class="absolute top-0 left-0 m-2 shadow-sm z-10">
-					<MetaScore score={result.metacritic} />
+					<Score score={result.metacritic} />
 				</div>
 			{/if}
 
