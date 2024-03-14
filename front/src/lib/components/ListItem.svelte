@@ -19,9 +19,11 @@
 	}
 </script>
 
-<li class="flex py-8 gap-2 md:gap-4 xs:px-2 h-14 items-center border-b first:border-t">
+<li class="flex gap-2 py-7 xs:py-8 md:gap-4 xs:px-2 h-14 items-center border-b first:border-t">
 	<span>{index + 1}.</span>
-	<span class="flex-grow line-clamp-2 text-sm xs:text-base">{item.title}</span>
+	<a href="/game/{item.rawgId}" class=" flex-grow line-clamp-2 text-sm xs:text-base">
+		{item.title}
+	</a>
 	<span>
 		<Status status={item.status} />
 	</span>
