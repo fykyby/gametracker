@@ -3,9 +3,11 @@
 	import UpdateListButton from '$lib/components/UpdateListButton.svelte';
 	import Score from './Score.svelte';
 	import Status from './Status.svelte';
+	import { user } from '$lib/stores/user';
 
 	export let index: number;
 	export let item: GameData;
+	export let username: string;
 	export let deleteItem: (index: number) => void;
 
 	$: item, deleteIfStatusNone(item, index);
@@ -26,5 +28,8 @@
 	<span>
 		<Score score={item.rating} isColored={false} />
 	</span>
-	<UpdateListButton bind:gameData={item} />
+
+	{#if $user?.username === username}
+		<UpdateListButton bind:gameData={item} />
+	{/if}
 </li>

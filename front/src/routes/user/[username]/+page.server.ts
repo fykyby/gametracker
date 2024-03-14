@@ -1,8 +1,9 @@
-import type { RecordModel } from 'pocketbase';
 import type { PageServerLoad } from './$types';
 import type { GameData } from '$lib/types';
 
 export const load: PageServerLoad = async ({ params, locals }) => {
+	let userExists: boolean = true;
+
 	let listItems: GameData[] = [];
 	try {
 		const list = await locals.pb
@@ -16,6 +17,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		});
 	} catch (_) {
 		listItems = [];
+		userExists = false;
 	}
 
 	let thisUserListItems: GameData[] = [];
@@ -48,6 +50,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
 	return {
 		username: params.username,
-		listItems
+		listItems,
+		userExists
 	};
 };

@@ -6,10 +6,10 @@
 	export let data: PageData;
 </script>
 
-{#if !data.user}
+{#if !data.userExists}
 	<ErrorAlert message="User not found." />
 {:else}
-	<h1>{data.user.username}'s list</h1>
+	<h1>{data.username}'s list</h1>
 
-	<List listItems={data.listItems} />
+	<List listItems={data.listItems} username={data.username} />
 {/if}
