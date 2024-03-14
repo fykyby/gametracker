@@ -4,6 +4,7 @@
 	import Score from './Score.svelte';
 	import Status from './Status.svelte';
 	import { user } from '$lib/stores/user';
+	import * as Table from '$lib/components/ui/table';
 
 	export let index: number;
 	export let item: GameData;
@@ -19,19 +20,23 @@
 	}
 </script>
 
-<li class="flex gap-2 py-7 xs:py-8 md:gap-4 xs:px-2 h-14 items-center border-b first:border-t">
-	<span>{index + 1}.</span>
-	<a href="/game/{item.rawgId}" class=" flex-grow line-clamp-2 text-sm xs:text-base">
-		{item.title}
-	</a>
-	<span>
+<Table.Row>
+	<Table.Cell class="w-0">{index + 1}</Table.Cell>
+	<Table.Cell class="min-w-20">
+		<a href="/game/{item.rawgId}" class="line-clamp-2 text-sm xs:text-base">
+			{item.title}
+		</a>
+	</Table.Cell>
+	<Table.Cell class="w-0">
 		<Status status={item.status} />
-	</span>
-	<span>
+	</Table.Cell>
+	<Table.Cell class="w-0">
 		<Score score={item.rating} isColored={false} />
-	</span>
+	</Table.Cell>
 
 	{#if $user?.username === username}
-		<UpdateListButton bind:gameData={item} />
+		<Table.Cell class="w-0">
+			<UpdateListButton bind:gameData={item} />
+		</Table.Cell>
 	{/if}
-</li>
+</Table.Row>

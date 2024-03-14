@@ -5,6 +5,8 @@
 	import * as Tabs from '$lib/components/ui/tabs';
 	import getGameDataStatusKeys from '$lib/getGameDataStatusKeys';
 	import formatPascalCase from '$lib/formatPascalCase';
+	import * as Table from '$lib/components/ui/table';
+	import { user } from '$lib/stores/user';
 
 	export let listItems: GameData[];
 	export let username: string;
@@ -45,8 +47,21 @@
 	</Tabs.List>
 </Tabs.Root>
 
-<ul class="flex flex-col">
-	{#each filteredListItems as item, index (item.rawgId)}
-		<ListItem {item} {index} {deleteItem} {username} />
-	{/each}
-</ul>
+<Table.Root class="w-full">
+	<Table.Header>
+		<Table.Row>
+			<Table.Head>#</Table.Head>
+			<Table.Head>Title</Table.Head>
+			<Table.Head>Status</Table.Head>
+			<Table.Head>Rating</Table.Head>
+			{#if $user?.username === username}
+				<Table.Head></Table.Head>
+			{/if}
+		</Table.Row>
+	</Table.Header>
+	<Table.Body>
+		{#each filteredListItems as item, index (item.rawgId)}
+			<ListItem {item} {index} {deleteItem} {username} />
+		{/each}
+	</Table.Body>
+</Table.Root>
