@@ -31,7 +31,9 @@
 		<Status status={item.status} />
 	</Table.Cell>
 	<Table.Cell class="w-0">
-		<Score score={item.rating} isColored={false} />
+		<div class="flex justify-center">
+			<Score score={item.rating} isColored={false} />
+		</div>
 	</Table.Cell>
 
 	{#if $user?.username === username}
