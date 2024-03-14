@@ -23,7 +23,7 @@
 <Table.Row>
 	<Table.Cell class="w-0">{index + 1}</Table.Cell>
 	<Table.Cell class="min-w-20">
-		<a href="/game/{item.rawgId}" class="line-clamp-2 text-sm xs:text-base">
+		<a href="/game/{item.rawgId}" class="line-clamp-2 text-sm xs:text-base w-max">
 			{item.title}
 		</a>
 	</Table.Cell>

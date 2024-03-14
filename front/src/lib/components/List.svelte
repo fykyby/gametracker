@@ -11,8 +11,14 @@
 	export let listItems: GameData[];
 	export let username: string;
 
+	type SortableColumn = 'title' | 'status' | 'rating';
+
 	let searchQuery: string = '';
 	let filteredStatus: GameDataStatus = GameDataStatus.None;
+	let sortedBy: { value: SortableColumn; reversed: boolean } = {
+		value: 'title',
+		reversed: false
+	};
 
 	$: filteredListItems = listItems.filter((item) => {
 		const isSearchResult = item.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -31,6 +37,28 @@
 		const newStatus = e as keyof typeof GameDataStatus;
 		filteredStatus = GameDataStatus[newStatus];
 	}
+
+	function handleSort(column: SortableColumn) {
+		const previousSortedBy = sortedBy;
+
+		sortedBy = {
+			value: column,
+			reversed: previousSortedBy.value === column && previousSortedBy.reversed === false
+		};
+
+		let sortedItems: GameData[] = [];
+		switch (column) {
+			case 'title':
+				sortedItems = filteredListItems.toSorted((a, b) => a.title.localeCompare(b.title, 'en'));
+			case 'status':
+				sortedItems = filteredListItems.toSorted((a, b) => a.status - b.status);
+			case 'rating':
+				sortedItems = filteredListItems.toSorted((a, b) => a.rating - b.rating);
+		}
+
+		if (sortedBy.reversed) sortedItems.reverse();
+		filteredListItems = sortedItems;
+	}
 </script>
 
 <Input type="search" placeholder="Search..." bind:value={searchQuery} />
@@ -38,22 +66,37 @@
 <Tabs.Root
 	value={GameDataStatus[filteredStatus]}
 	onValueChange={handleFilteredStatusChange}
-	class="overflow-auto"
+	class="overflow-x-auto"
 >
-	<Tabs.List>
+	<Tabs.List class="h-auto">
 		{#each getGameDataStatusKeys() as key}
-			<Tabs.Trigger value={key}>{key === 'None' ? 'All' : formatPascalCase(key)}</Tabs.Trigger>
+			<Tabs.Trigger value={key} class="md:text-lg">
+				{key === 'None' ? 'All' : formatPascalCase(key)}
+			</Tabs.Trigger>
 		{/each}
 	</Tabs.List>
 </Tabs.Root>
 
 <Table.Root class="w-full">
 	<Table.Header>
-		<Table.Row>
-			<Table.Head>#</Table.Head>
-			<Table.Head>Title</Table.Head>
-			<Table.Head>Status</Table.Head>
-			<Table.Head>Rating</Table.Head>
+		<Table.Row class="hover:bg-transparent">
+			<Table.Head class="select-none">#</Table.Head>
+			<Table.Head>
+				<button on:click={() => handleSort('title')} class="w-full h-full text-left">
+					Title
+				</button>
+			</Table.Head>
+			<Table.Head>
+				<button on:click={() => handleSort('status')} class="w-full h-full text-left">
+					Status
+				</button>
+			</Table.Head>
+			<Table.Head>
+				<button on:click={() => handleSort('rating')} class="w-full h-full text-left">
+					Rating
+				</button>
+			</Table.Head>
+
 			{#if $user?.username === username}
 				<Table.Head></Table.Head>
 			{/if}
