@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { GameDataStatus, type GameData } from '$lib/types';
+	import { type GameData } from '$lib/types';
 	import UpdateListButton from '$lib/components/UpdateListButton.svelte';
 	import Score from './Score.svelte';
 	import Status from './Status.svelte';

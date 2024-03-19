@@ -20,13 +20,33 @@
 		reversed: false
 	};
 
-	$: filteredListItems = listItems.filter((item) => {
-		const isSearchResult = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-		if (filteredStatus === GameDataStatus.None) return isSearchResult;
+	$: filteredListItems = listItems
+		.filter((item) => {
+			const isSearchResult = item.title.toLowerCase().includes(searchQuery.toLowerCase());
+			if (filteredStatus === GameDataStatus.None) return isSearchResult;
 
-		const isFilteredStatus = item.status === filteredStatus;
-		return isSearchResult && isFilteredStatus;
-	});
+			const isFilteredStatus = item.status === filteredStatus;
+
+			return isSearchResult && isFilteredStatus;
+		})
+		.toSorted((a, b) => {
+			let value = 0;
+
+			switch (sortedBy.value) {
+				case 'title':
+					value = a.title.localeCompare(b.title, 'en');
+					break;
+				case 'status':
+					value = a.status - b.status;
+					break;
+				case 'rating':
+					value = b.rating - a.rating;
+					break;
+			}
+
+			if (sortedBy.reversed) value = -value;
+			return value;
+		});
 
 	function updateItem(item: GameData) {
 		const index: number = listItems.findIndex((i) => i.rawgId === item.rawgId);
@@ -59,20 +79,6 @@
 			value: column,
 			reversed: previousSortedBy.value === column && previousSortedBy.reversed === false
 		};
-
-		let sortedItems: GameData[] = [];
-		switch (column) {
-			case 'title':
-				sortedItems = filteredListItems.toSorted((a, b) => a.title.localeCompare(b.title, 'en'));
-			case 'status':
-				sortedItems = filteredListItems.toSorted((a, b) => a.status - b.status);
-			case 'rating':
-				sortedItems = filteredListItems.toSorted((a, b) => a.rating - b.rating);
-		}
-
-		console.log(filteredListItems);
-		if (sortedBy.reversed) sortedItems.reverse();
-		filteredListItems = sortedItems;
 	}
 </script>
 
