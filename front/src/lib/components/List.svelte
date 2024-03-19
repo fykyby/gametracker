@@ -28,6 +28,20 @@
 		return isSearchResult && isFilteredStatus;
 	});
 
+	function updateItem(item: GameData) {
+		const index: number = listItems.findIndex((i) => i.rawgId === item.rawgId);
+
+		if (listItems[index].status === item.status && listItems[index].rating === item.rating) return;
+
+		if (item.status === GameDataStatus.None) {
+			deleteItem(index);
+			return;
+		}
+
+		listItems[index] = item;
+		listItems = listItems;
+	}
+
 	function deleteItem(index: number) {
 		listItems.splice(index, 1);
 		listItems = listItems;
@@ -56,6 +70,7 @@
 				sortedItems = filteredListItems.toSorted((a, b) => a.rating - b.rating);
 		}
 
+		console.log(filteredListItems);
 		if (sortedBy.reversed) sortedItems.reverse();
 		filteredListItems = sortedItems;
 	}
@@ -104,7 +119,7 @@
 	</Table.Header>
 	<Table.Body>
 		{#each filteredListItems as item, index (item.rawgId)}
-			<ListItem {item} {index} {deleteItem} {username} />
+			<ListItem {item} {index} {updateItem} {username} />
 		{/each}
 	</Table.Body>
 </Table.Root>

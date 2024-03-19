@@ -9,15 +9,9 @@
 	export let index: number;
 	export let item: GameData;
 	export let username: string;
-	export let deleteItem: (index: number) => void;
+	export let updateItem: (item: GameData) => void;
 
-	$: item, deleteIfStatusNone(item, index);
-
-	function deleteIfStatusNone(item: GameData, index: number) {
-		if (item.status !== GameDataStatus.None) return;
-
-		deleteItem(index);
-	}
+	$: item, updateItem(item);
 </script>
 
 <Table.Row>
