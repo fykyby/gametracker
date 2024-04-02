@@ -12,12 +12,8 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 	let listItems: RecordModel[] = [];
 	if (locals.user) {
 		try {
-			const list = await locals.pb
-				.collection('lists')
-				.getFirstListItem(`user.id = '${locals.user.id}'`);
-
 			listItems = await locals.pb.collection('listItems').getFullList({
-				filter: `list.id = '${list.id}'`
+				filter: `user.id = '${locals.user.id}'`
 			});
 		} catch (_) {
 			listItems = [];

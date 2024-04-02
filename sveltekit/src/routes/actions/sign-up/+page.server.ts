@@ -24,10 +24,6 @@ export const actions: Actions = {
 			await event.locals.pb
 				.collection('users')
 				.authWithPassword(form.data.email, form.data.password);
-			await event.locals.pb.collection('lists').create({
-				user: user.id,
-				isPrivate: false
-			});
 
 			return { form, user };
 		} catch (err: any) {

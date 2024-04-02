@@ -5,6 +5,7 @@
 	import { user } from '$lib/stores/user';
 	import { setContext } from 'svelte';
 	import UpdateListDialog from '$lib/components/UpdateListDialog.svelte';
+	import { invalidateAll } from '$app/navigation';
 
 	export let data: PageData;
 

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { user } from '$lib/stores/user';
-	import { Search, User } from 'lucide-svelte';
+	import { Search } from 'lucide-svelte';
 	import Button from './ui/button/button.svelte';
 	import SignUpDialog from './SignUpDialog.svelte';
 	import LogInDialog from './LogInDialog.svelte';

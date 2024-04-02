@@ -19,12 +19,13 @@ form .formFooter {
 }
 
 h1,
-h2 {
+h2,
+h3 {
 	@apply font-semibold leading-none tracking-tight;
 }
 
 h1 {
-	@apply text-xl md:text-2xl;
+	@apply text-xl md:text-2xl my-2;
 }
 
 h2 {

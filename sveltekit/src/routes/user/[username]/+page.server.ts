@@ -6,14 +6,14 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
 	let listItems: GameData[] = [];
 	try {
-		const list = await locals.pb
-			.collection('lists')
-			.getFirstListItem(`user.username = '${params.username}'`);
+		const user = await locals.pb
+			.collection('users')
+			.getFirstListItem(`username = '${params.username}'`);
 
-		if (!list) throw new Error();
+		if (!user) throw new Error();
 
 		listItems = await locals.pb.collection('listItems').getFullList<GameData>({
-			filter: `list.id = '${list.id}'`
+			filter: `user.id = '${user.id}'`
 		});
 	} catch (_) {
 		listItems = [];
@@ -23,12 +23,8 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 	let thisUserListItems: GameData[] = [];
 	if (locals.user && listItems.length > 0) {
 		try {
-			const list = await locals.pb
-				.collection('lists')
-				.getFirstListItem(`user.id = '${locals.user.id}'`);
-
 			thisUserListItems = await locals.pb.collection('listItems').getFullList<GameData>({
-				filter: `list.id = '${list.id}'`
+				filter: `user.id = '${locals.user.id}'`
 			});
 		} catch (_) {
 			thisUserListItems = [];

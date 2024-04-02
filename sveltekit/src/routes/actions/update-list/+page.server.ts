@@ -22,23 +22,21 @@ export const actions: Actions = {
 		}
 
 		try {
-			const list = await event.locals.pb
-				.collection('lists')
-				.getFirstListItem(`user.id = '${event.locals.user.id}'`);
-
 			let item: RecordModel | null = null;
 			try {
 				// try/catch block because getFirstListItem
 				// returns an error if item hasn't been found
 				item = await event.locals.pb
 					.collection('listItems')
-					.getFirstListItem(`list.id = '${list.id}' && rawgId = '${form.data.rawgId}'`);
+					.getFirstListItem(
+						`user.id = '${event.locals.user.id}' && rawgId = '${form.data.rawgId}'`
+					);
 			} catch (err: unknown) {
 				item = null;
 			}
 
 			const newItem = {
-				list: list.id,
+				user: event.locals.user.id,
 				rawgId: form.data.rawgId,
 				title: form.data.title,
 				status: form.data.status,
@@ -56,7 +54,6 @@ export const actions: Actions = {
 				await event.locals.pb.collection('listItems').update(item.id, newItem);
 			}
 		} catch (err: unknown) {
-			console.log(err);
 			form.message = getGenericErrorMessage();
 			return fail(400, {
 				form
