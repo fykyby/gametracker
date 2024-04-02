@@ -77,7 +77,7 @@
 		<div
 			bind:innerHTML={game.description}
 			contenteditable="false"
-			class="prose prose-invert max-w-none md:prose-lg"
+			class="prose prose-invert max-w-none"
 		/>
 	</GamePageSection>
 {/if}

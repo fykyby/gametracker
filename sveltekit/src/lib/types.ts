@@ -38,7 +38,6 @@ export type Game = {
 	metacritic: number;
 	metacritic_url: string;
 	name: string;
-	name_original: string;
 	platforms: {
 		platform: {
 			name: string;
@@ -50,7 +49,6 @@ export type Game = {
 		name: string;
 		slug: string;
 	}[];
-	reddit_url: string;
 	released: string;
 	stores: {
 		store: {
@@ -64,7 +62,6 @@ export type Game = {
 		slug: string;
 	}[];
 	tba: boolean;
-	website: string;
 	screenshots: {
 		image: string;
 	}[];
