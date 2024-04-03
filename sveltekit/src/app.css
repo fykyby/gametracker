@@ -29,7 +29,7 @@ h1 {
 }
 
 h2 {
-	@apply text-lg;
+	@apply text-lg mn:pl-2;
 }
 
 h3 {

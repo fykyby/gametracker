@@ -9,10 +9,6 @@
 
 	export let data: PageData;
 	const { game } = data;
-
-	// TODO: delete console log
-	// use game.tba somehow (countdown?)
-	console.log(game);
 </script>
 
 <div class="flex gap-2 md:gap-3 justify-between">
@@ -20,7 +16,10 @@
 		<h1 class="line-clamp-3 hyphens-auto break-words">
 			{game.name}
 		</h1>
-		<span class="text-sm text-muted-foreground leading-none block -mt-1.5">{game.released}</span>
+
+		{#if game.released}
+			<span class="text-sm text-muted-foreground leading-none block -mt-1.5">{game.released}</span>
+		{/if}
 	</div>
 
 	<div class="flex gap-2 md:gap-3 items-center">
