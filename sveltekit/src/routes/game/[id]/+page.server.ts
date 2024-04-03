@@ -18,7 +18,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 		try {
 			listItem = await locals.pb
 				.collection('listItems')
-				.getFirstListItem(`user.id = '${locals.user.id}'`);
+				.getFirstListItem(`user.id = '${locals.user.id}' && rawgId = '${params.id}'`);
 		} catch (_) {
 			listItem = null;
 		}
