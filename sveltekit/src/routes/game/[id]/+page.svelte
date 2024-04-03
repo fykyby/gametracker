@@ -23,7 +23,7 @@
 		<span class="text-sm text-muted-foreground leading-none block -mt-1.5">{game.released}</span>
 	</div>
 
-	<div class="flex gap-2 items-center">
+	<div class="flex gap-2 md:gap-3 items-center">
 		<Score score={game.metacritic} url={game.metacritic_url} />
 
 		{#if $user}

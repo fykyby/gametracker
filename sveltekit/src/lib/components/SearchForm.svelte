@@ -16,7 +16,7 @@
 
 <h1>Search {initialQuery ? `- ${initialQuery}` : ''}</h1>
 
-<form action="/search/games/{query}/1" class="flex flex-row w-full gap-2 flex-nowrap">
+<form action="/search/games/{query}/1" class="flex flex-row w-full gap-2 md:gap-3 flex-nowrap">
 	<Input type="search" required placeholder="Search..." bind:value={query} />
 
 	<Button
