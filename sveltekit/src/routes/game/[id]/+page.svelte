@@ -15,8 +15,13 @@
 	console.log(game);
 </script>
 
-<div class="flex gap-2 md:gap-3 justify-between items-center">
-	<h1 class="line-clamp-3 hyphens-auto break-words">{game.name}</h1>
+<div class="flex gap-2 md:gap-3 justify-between">
+	<div class="flex flex-col justify-center">
+		<h1 class="line-clamp-3 hyphens-auto break-words">
+			{game.name}
+		</h1>
+		<span class="text-sm text-muted-foreground leading-none block -mt-1.5">{game.released}</span>
+	</div>
 
 	<div class="flex gap-2 items-center">
 		<Score score={game.metacritic} url={game.metacritic_url} />
