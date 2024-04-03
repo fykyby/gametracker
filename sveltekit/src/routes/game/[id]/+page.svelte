@@ -71,7 +71,6 @@
 		{#each game.platforms as platform}
 			<Badge variant="outline" class="text-sm xs:text-base">
 				{platform.platform.name}
-				{platform.released_at ? `- ${platform.released_at}` : ''}
 			</Badge>
 		{/each}
 	</GamePageSection>

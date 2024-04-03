@@ -43,7 +43,6 @@ export type Game = {
 			name: string;
 			slug: string;
 		};
-		released_at: string;
 	}[];
 	publishers: {
 		name: string;
