@@ -42,14 +42,14 @@
 	<Carousel.Content>
 		{#each game.screenshots as screenshot, i (i)}
 			<Carousel.Item class="basis-5/6 xs:basis-4/6 md:basis-1/2 h-64 md:h-80 lg:h-96">
-				<div class="h-full">
+				<a href={screenshot.image} target="_blank" class="h-full">
 					<img
 						src={screenshot.image}
 						alt={`${game.name} - Screenshot #${i + 1}`}
 						class="w-full h-full rounded-lg object-cover"
 						loading="lazy"
 					/>
-				</div>
+				</a>
 			</Carousel.Item>
 		{/each}
 	</Carousel.Content>

@@ -15,7 +15,7 @@ func init() {
 			{
 				"id": "_pb_users_auth_",
 				"created": "2024-02-28 12:26:41.165Z",
-				"updated": "2024-03-07 17:42:22.053Z",
+				"updated": "2024-04-02 21:59:29.610Z",
 				"name": "users",
 				"type": "auth",
 				"system": false,
@@ -43,7 +43,7 @@ func init() {
 			{
 				"id": "g1oxno8kidhx0ij",
 				"created": "2024-02-28 17:11:51.056Z",
-				"updated": "2024-04-02 20:23:50.527Z",
+				"updated": "2024-04-02 21:59:29.610Z",
 				"name": "listItems",
 				"type": "base",
 				"system": false,
